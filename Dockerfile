@@ -44,8 +44,10 @@ ENV PYSPARK_DRIVER_PYTHON_OPTS " --NotebookApp.open_browser=False --NotebookApp.
 
 RUN mkdir /pyspark
 RUN chown $NB_USER /pyspark
-USER $NB_USER
 WORKDIR /pyspark
-ENV GRANT_SUDO "True"
+RUN echo "$NB_USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/notebook
 ENTRYPOINT ["tini", "--"]
 CMD ["start-notebook.sh"," --NotebookApp.open_browser=False --NotebookApp.ip='*' --NotebookApp.port=8888 --NotebookApp.password='' --NotebookApp.token=''"]
+
+USER $NB_USER
+
