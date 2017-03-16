@@ -47,7 +47,7 @@ RUN chown $NB_USER /pyspark
 WORKDIR /pyspark
 RUN echo "$NB_USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/notebook
 ENTRYPOINT ["tini", "--"]
-CMD ["start-notebook.sh"," --NotebookApp.open_browser=False --NotebookApp.ip='*' --NotebookApp.port=8888 --NotebookApp.password='' --NotebookApp.token=''"]
+CMD ["start-notebook.sh"," --NotebookApp.open_browser=False --NotebookApp.ip='*' --NotebookApp.port=8888 --NotebookApp.password='' --NotebookApp.token='A4B3C2D1_'"]
 
 USER $NB_USER
 
